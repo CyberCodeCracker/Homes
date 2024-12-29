@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { HousingLocationComponent } from "../housing-location/housing-location.component";
 import { HousingLocation } from "../housing-location";
 import { CommonModule } from "@angular/common";
@@ -26,10 +26,8 @@ import { HousingService } from "../housing.service";
 export class HomeComponent {
 
   readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-
-  constructor(
-      private housingService: HousingService,
-  ) {
+  housingService: HousingService = inject(HousingService);
+  constructor() {
     this.housingLocationList = this.housingService.getAllHousingLocation();
   }
 
